@@ -1,43 +1,43 @@
 {
-    "name": "marionnewlevant/mega-merge",
-    "description": "Merge this that and the other... With twig parsing",
-    "type": "craft-plugin",
-    "version": "1.0.0",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "megamerge"
-    ],
-    "support": {
-        "docs": "https://github.com/craft-megamerge/mega-merge/blob/master/README.md",
-        "issues": "https://github.com/craft-megamerge/mega-merge/issues"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Marion Newlevant",
-            "homepage": "http://marion.newlevant.com"
-        }
-    ],
-    "require": {
-        "craftcms/cms": "^3.0.0-RC1"
-    },
-    "autoload": {
-        "psr-4": {
-          "marionnewlevant\\megamerge\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "MegaMerge",
-        "handle": "mega-merge",
-        "hasCpSettings": false,
-        "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/craft-megamerge/mega-merge/master/CHANGELOG.md",
-        "components": {
-            "megaMergeService": "marionnewlevant\\megamerge\\services\\MegaMergeService"
-        },
-        "class": "marionnewlevant\\megamerge\\MegaMerge"
+  "name": "marionnewlevant/mega-merge",
+  "description": "Merge this that and the other... With twig parsing",
+  "type": "craft-plugin",
+  "version": "2.0.0",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "megamerge"
+  ],
+  "support": {
+    "docs": "https://github.com/craft-megamerge/mega-merge/blob/v2/README.md",
+    "issues": "https://github.com/craft-megamerge/mega-merge/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marion Newlevant",
+      "homepage": "http://marion.newlevant.com"
     }
+  ],
+  "require": {
+    "craftcms/cms": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "marionnewlevant\\megamerge\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "MegaMerge",
+    "handle": "mega-merge",
+    "hasCpSettings": false,
+    "hasCpSection": false,
+    "changelogUrl": "https://raw.githubusercontent.com/craft-megamerge/mega-merge/v2/CHANGELOG.md",
+    "components": {
+      "megaMergeService": "marionnewlevant\\megamerge\\services\\MegaMergeService"
+    },
+    "class": "marionnewlevant\\megamerge\\MegaMerge"
+  }
 }

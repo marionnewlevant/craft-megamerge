@@ -10,7 +10,7 @@
 
 namespace marionnewlevant\megamerge;
 
-use marionnewlevant\megamerge\services\MegaMergeService as MegaMergeServiceService;
+use marionnewlevant\megamerge\services\MegaMergeService;
 use marionnewlevant\megamerge\variables\MegaMergeVariable;
 use marionnewlevant\megamerge\fields\MegaMergeField as MegaMergeFieldField;
 
@@ -31,7 +31,7 @@ use yii\base\Event;
  * @package   MegaMerge
  * @since     1.0.0
  *
- * @property  MegaMergeServiceService $megaMergeService
+ * @property  MegaMergeService $megaMergeService
  */
 class MegaMerge extends Plugin
 {
@@ -49,7 +49,7 @@ class MegaMerge extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
 
     // Public Methods
     // =========================================================================
@@ -57,7 +57,7 @@ class MegaMerge extends Plugin
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         self::$plugin = $this;

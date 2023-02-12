@@ -14,6 +14,7 @@ use marionnewlevant\megamerge\MegaMerge;
 
 use Craft;
 use craft\fields\Table;
+use craft\helpers\Cp;
 use craft\helpers\Json;
 use craft\web\assets\tablesettings\TableSettingsAsset;
 
@@ -30,7 +31,7 @@ class MegaMergeField extends Table
     /**
      * @var array|null The columns that should be shown in the table
      */
-    public $columns = [
+    public array $columns = [
         'col1' => [
             'heading' => 'Key',
             'handle' => 'key',
@@ -48,7 +49,7 @@ class MegaMergeField extends Table
     /**
      * @var array The default row values that new elements should have
      */
-    public $defaults = [
+    public ?array $defaults = [
     ];
 
     // Static Methods
@@ -68,7 +69,7 @@ class MegaMergeField extends Table
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         $typeOptions = [
             'multiline' => Craft::t('app', 'Multi-line text'),
@@ -114,32 +115,31 @@ class MegaMergeField extends Table
             Json::encode($columnSettings, JSON_UNESCAPED_UNICODE) .
             ');');
 
-        $columnsField = $view->renderTemplateMacro('_includes/forms', 'editableTableField', [
-            [
-                'label' => Craft::t('app', 'Table Columns'),
-                'instructions' => Craft::t('mega-merge', 'These are the columns your table will have.'),
-                'id' => 'columns',
-                'name' => 'columns',
-                'cols' => $columnSettings,
-                'rows' => $this->columns,
-                'initJs' => false,
-                'static' => true // make it not editable
-            ]
+        $columnsField = Cp::editableTableFieldHtml([
+            'label' => Craft::t('app', 'Table Columns'),
+            'instructions' => Craft::t('mega-merge', 'These are the columns your table will have.'),
+            'id' => 'columns',
+            'name' => 'columns',
+            'cols' => $columnSettings,
+            'rows' => $this->columns,
+            'initJs' => false,
+            'static' => true // make it not editable
         ]);
 
-        $defaultsField = $view->renderTemplateMacro('_includes/forms', 'editableTableField', [
-            [
-                'label' => Craft::t('app', 'Default Values'),
-                'instructions' => Craft::t('app', 'Define the default values for the field.'),
-                'id' => 'defaults',
-                'name' => 'defaults',
-                'cols' => $this->columns,
-                'rows' => $this->defaults,
-                'initJs' => false
-            ]
+        $defaultsField = Cp::editableTableFieldHtml([
+            'label' => Craft::t('app', 'Default Values'),
+            'instructions' => Craft::t('app', 'Define the default values for the field.'),
+            'id' => 'defaults',
+            'name' => 'defaults',
+            'allowAdd' => true,
+            'allowReorder' => true,
+            'allowDelete' => true,
+            'cols' => $this->columns,
+            'rows' => $this->defaults,
+            'initJs' => false
         ]);
 
-        return $view->renderTemplate('_components/fieldtypes/Table/settings', [
+        return $view->renderTemplate('_components/fieldtypes/Table/settings.twig', [
             'field' => $this,
             'columnsField' => $columnsField,
             'defaultsField' => $defaultsField,

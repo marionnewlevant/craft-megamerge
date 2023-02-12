@@ -1,4 +1,4 @@
-# MegaMerge plugin for Craft CMS 3.x
+# MegaMerge plugin for Craft CMS 4.x
 
 MegaMerge: [merge]()
 MegaMerge provides a fieldtype which is a Craft table with predefined `Key` and `Value` columns. It lets you merge together those fields with php arrays and twig arrays, and then look up values of keys in the merged array. The resultant values are parsed as twig.
@@ -7,7 +7,7 @@ This is a general purpose utility, though one of its potential uses (and the one
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later.
 
 ## Installation
 
@@ -30,11 +30,11 @@ MegaMerge provides a fieldtype (a key/value table) and three functions:
 
 ## Using MegaMerge
 
-**The key/value pairs** A megaMerge field called `globalSettings` in the `g_configuration` global set: 
+**The key/value pairs** A megaMerge field called `globalSettings` in the `g_configuration` global set:
 
 ![megaMergeField](docs/megaMergeField.png)
 
-Settings defined in config/general.php:
+Settings defined in config/custom.php:
 
 ```php
 'megaMerge' => [
@@ -46,7 +46,7 @@ Settings defined in config/general.php:
 
 ```twig
 {% do craft.megaMerge.init([
-    craft.app.config.general.megaMerge,
+    craft.app.config.custom.megaMerge,
     g_configuration.globalSettings
   ], {object: entry}) %}
 ```
@@ -56,7 +56,6 @@ Settings defined in config/general.php:
 ```twig
 <title>{{ craft.megaMerge.value('title') }}</title>
 ```
-
 
 Brought to you by [Marion Newlevant](http://marion.newlevant.com).
 Icon insides by [Dmitry Baranovskiy from the Noun Project](https://thenounproject.com/term/merge/5026/)
